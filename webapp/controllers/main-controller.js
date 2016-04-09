@@ -7,6 +7,15 @@ function MainCtrl() {
     mainVm.setCurrentCategory = setCurrentCategory;
     mainVm.currentCategory = null;
     mainVm.isCurrentCategory = isCurrentCategory;
+    mainVm.isCreating = false;
+    mainVm.isEditing = false;
+    mainVm.shouldShowCreating = shouldShowCreating;
+    mainVm.shouldShowEditing = shouldShowEditing;
+    mainVm.startCreating = startCreating;
+    mainVm.startEditing = startEditing;
+    mainVm.cancelCreating = cancelCreating;
+    mainVm.cancelEditing = cancelEditing;
+
     mainVm.categories = [
         {"id": 0, "name": "Development"},
         {"id": 1, "name": "Design"},
@@ -27,10 +36,41 @@ function MainCtrl() {
 
     function setCurrentCategory(category) {
         mainVm.currentCategory = category;
+        cancelCreating();
+        cancelEditing();
     }
 
     function isCurrentCategory(category) {
         return mainVm.currentCategory != null && category.name === mainVm.currentCategory.name;
+    }
+
+    /***
+     * Creating and Editing States
+     */
+    function startCreating() {
+        mainVm.isCreating = true;
+        mainVm.isEditing = false;
+    }
+
+    function startEditing() {
+        mainVm.isEditing = true;
+        mainVm.isCreating = false;
+    }
+
+    function shouldShowCreating() {
+        return mainVm.currentCategory && !mainVm.isEditing;
+    }
+
+    function shouldShowEditing() {
+        return mainVm.isEditing && !mainVm.isCreating;
+    }
+
+    function cancelEditing() {
+        mainVm.isEditing = false;
+    }
+
+    function cancelCreating() {
+        mainVm.isCreating = false;
     }
 
 }
