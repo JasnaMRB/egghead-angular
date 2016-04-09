@@ -4,13 +4,15 @@ angular
 
 function MainCtrl() {
     var mainVm = this;
+    mainVm.setCurrentCategory = setCurrentCategory;
+    mainVm.currentCategory = null;
+    mainVm.isCurrentCategory = isCurrentCategory;
     mainVm.categories = [
         {"id": 0, "name": "Development"},
         {"id": 1, "name": "Design"},
         {"id": 2, "name": "Exercise"},
         {"id": 3, "name": "Humor"}
     ];
-
     mainVm.bookmarks = [
         {"id": 0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },
         {"id": 1, "title": "Egghead.io", "url": "http://egghead.io", "category": "Development" },
@@ -22,4 +24,13 @@ function MainCtrl() {
         {"id": 7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
         {"id": 8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
     ];
+
+    function setCurrentCategory(category) {
+        mainVm.currentCategory = category;
+    }
+
+    function isCurrentCategory(category) {
+        return mainVm.currentCategory != null && category.name === mainVm.currentCategory.name;
+    }
+
 }
