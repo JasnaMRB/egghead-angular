@@ -15,6 +15,8 @@ function MainCtrl() {
     mainVm.startEditing = startEditing;
     mainVm.cancelCreating = cancelCreating;
     mainVm.cancelEditing = cancelEditing;
+    mainVm.createBookmark = createBookmark;
+    mainVm.resetCreateForm = resetCreateForm;
 
     mainVm.categories = [
         {"id": 0, "name": "Development"},
@@ -71,6 +73,24 @@ function MainCtrl() {
 
     function cancelCreating() {
         mainVm.isCreating = false;
+    }
+
+    /***
+     * CRUD
+     */
+    function createBookmark(bookmark) {
+        bookmark.id = mainVm.bookmarks.length;
+        mainVm.bookmarks.push(bookmark);
+        resetCreateForm();
+    }
+
+    function resetCreateForm() {
+        mainVm.newBookmark ={
+            title: '',
+            url: '',
+            category: mainVm.currentCategory.name
+        }
+
     }
 
 }
