@@ -70,5 +70,8 @@ Then: `http-server`
      }`
      In categories view:
      `<a ui-sref="eggly.categories.bookmarks({category:category.name})" ng-click="mainVm.setCurrentCategory(category)">{{ category.name }}</a>`
+ 1. Create separate service classes to simplify controllers.
+ 1. Externalize inline data and call them with $http.get service.
+ 1. Use $q service which handles promises (what $http.get returns) for caching and other data manipulation before sending data to controllers.
 
 

@@ -1,7 +1,3 @@
-angular
-    .module('eggly')
-    .controller('MainCtrl', MainCtrl);
-
 function MainCtrl() {
     var mainVm = this;
     mainVm.setCurrentCategory = setCurrentCategory;

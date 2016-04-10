@@ -19,10 +19,15 @@ function bookmarkConfig($stateProvider) {
     });
 }
 
-function BookmarksCtrl($stateParams, BookmarksModel) {
+function BookmarksCtrl($stateParams, BookmarksModel, CategoriesModel) {
     var bmVm = this;
     bmVm.currentCategoryName = $stateParams.category; // from the url parameter
-    BookmarksModel.getBookmarks().then(function(result) {
-        bmVm.bookmarks = result
+    bmVm.getCurrentCategory = CategoriesModel.getCurrentCategory;
+    bmVm.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
+
+    CategoriesModel.setCurrentCategory($stateParams.category);
+    BookmarksModel.getBookmarks().then(function(bookmarks) {
+        bmVm.bookmarks = bookmarks;
     });
+
 }
