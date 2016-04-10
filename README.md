@@ -14,3 +14,7 @@ npm
 
 ## To run
 `http-server`
+
+## Bugs/Desired Improvements
+- Not scalable: everything's in one controller
+- Delete function breaks create function

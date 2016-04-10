@@ -21,6 +21,7 @@ function MainCtrl() {
     mainVm.setEditedBookmark = setEditedBookmark;
     mainVm.updateBookmark = updateBookmark;
     mainVm.isSelectedBookmark = isSelectedBookmark;
+    mainVm.deleteBookmark = deleteBookmark;
 
     mainVm.categories = [
         {"id": 0, "name": "Development"},
@@ -111,6 +112,15 @@ function MainCtrl() {
 
     function isSelectedBookmark(bookmarkId) {
         return mainVm.editedBookmark !== null && mainVm.editedBookmark.id === bookmarkId;
+    }
+
+    function deleteBookmark(bookmark) {
+        var deleteConfirm = confirm("Are you sure want to delete this bookmark?");
+        if (deleteConfirm) {
+            _.remove(mainVm.bookmarks, function(b) {
+                return b.id === bookmark.id;
+            });
+        }
     }
 
 }
