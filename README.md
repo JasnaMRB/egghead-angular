@@ -15,6 +15,29 @@ npm
 ## To run
 `http-server`
 
-## Bugs/Desired Improvements
-- Not scalable: everything's in one controller
-- Delete function breaks create function
+## Development Steps
+### Beginning
+1. Create HTML template
+1. Add Angular, jQuery, bootstrap dependencies
+1. Add ng-app to `<html>` opening tag to initialize Angular
+1. Create Angular app in app.js: 
+    `angular.module('eggly',[])`
+1. Create a main controller in main-controller.js:
+    `angular.module('eggly').controller('MainCtrl', MainCtrl);`
+    `function MainCtrl() {`
+        `var mainVm = this;`
+        `mainVm.someVariable = null;`
+        `mainVm.someFunction = someFunction;`
+        `function someFunction() { ... }`
+     `}`
+1. Add your data, e.g., JSON for categories and bookmarks, in the controller.
+1. Register your controller with an element in the view: `<body ng-controller="MainCtrl as mainVm">`.
+1. In a child element, use `ng-repeat` and handlebars `{{ }}`
+    `<div><ul><li ng-repeat="bookmark in mainVm.bookmarks">{{ bookmark.title }}</li></ul></div>`
+1. Create functions and variables to filter display of bookmarks by current selected category.
+1. Create functions and variables for CRUD operations on bookmarks.
+1. Create functions and variables to make display nicer, e.g., highlight active category or active bookmark.
+
+### Refactoring code for modularity/scalability
+
+
