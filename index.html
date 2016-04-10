@@ -22,9 +22,9 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div ng-repeat="bookmark in mainVm.bookmarks | filter:{category:mainVm.currentCategory.name}">
+            <div ng-repeat="bookmark in mainVm.bookmarks | filter:{category:mainVm.currentCategory.name}" ng-class="{active : mainVm.isSelectedBookmark(bookmark.id) }">
                 <button type="button" class="close">&times;</button>
-                <button type="button" class="btn btn-link" ng-click="mainVm.startEditing()" ><span class="glyphicon glyphicon-pencil"></span>
+                <button type="button" class="btn btn-link" ng-click="mainVm.setEditedBookmark(bookmark);mainVm.startEditing()" ><span class="glyphicon glyphicon-pencil"></span>
                 </button>
                 <a href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
             </div>
@@ -53,8 +53,20 @@
             </div>
             <!-- EDITING -->
             <div ng-if="mainVm.shouldShowEditing()">
-                <h3>Editing a bookmark!</h3>
-                <button type="button" class="btn btn-default btn-lg pull-right" ng-click="mainVm.cancelEditing()">Cancel</button>
+                <h3>Editing a bookmark:</h3>
+                <form class="edit-form" role="form" ng-submit="mainVm.updateBookmark(mainVm.editedBookmark)" novalidate>
+                    <div class="form-group">
+                        <label>Bookmark Title</label>
+                        <input type="text" class="form-control" ng-model="mainVm.editedBookmark.title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label>Bookmark URL</label>
+                        <input type="text" class="form-control" ng-model="mainVm.editedBookmark.url" placeholder="Enter URL">
+                    </div>
+                    <button type="submit" class="btn btn-info btn-lg">Save</button>
+                    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="mainVm.cancelEditing()">Cancel</button>
+                </form>
+
             </div>
         </div>
     </div>
