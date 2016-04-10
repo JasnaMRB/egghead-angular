@@ -54,5 +54,6 @@ Then: `http-server`
         'categories.bookmarks.edit'
     ]);`
 1. Inject the bookmarks and categories modules into the main app module. `angular.module("eggly", ['categories', 'categories.bookmarks']);`
+1. Add ui-router for state URL and state parameters. State parameters help pass information between modules.
 
 
