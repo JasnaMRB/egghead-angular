@@ -20,7 +20,9 @@ function bookmarkConfig($stateProvider) {
 }
 
 function BookmarksCtrl($stateParams, BookmarksModel) {
-    var bkVm = this;
-    bkVm.currentCategoryName = $stateParams.category; // from the url parameter
-    bkVm.bookmarks = BookmarksModel.getBookmarks();
+    var bmVm = this;
+    bmVm.currentCategoryName = $stateParams.category; // from the url parameter
+    BookmarksModel.getBookmarks().then(function(result) {
+        bmVm.bookmarks = result
+    });
 }

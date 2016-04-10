@@ -23,7 +23,10 @@ angular.module('categories').controller('CategoriesCtrl', CategoriesCtrl);
 
 function CategoriesCtrl(CategoriesModel) {
     var catVm = this;
-    catVm.categories = CategoriesModel.getCategories();
+    CategoriesModel.getCategories()
+        .then(function(result) {
+            catVm.categories = result;
+        });
 
 }
 
