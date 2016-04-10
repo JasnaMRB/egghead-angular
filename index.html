@@ -12,7 +12,7 @@
 </head>
 <body ng-controller="MainCtrl as mainVm">
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" ui-view>
         <div class="col-sm-3 col-md-2 sidebar">
             <a href="#" ng-click="mainVm.setCurrentCategory(null)"><img class="logo" src="assets/img/eggly-logo.png"></a>
             <ul class="nav nav-sidebar">
@@ -73,6 +73,7 @@
 </div>
 
 <script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/lodash/lodash.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -80,6 +81,7 @@
 <!-- App-->
 <script src="webapp/app.js"></script>
 <script src="webapp/controllers/main-controller.js"></script>
+<script src="webapp/categories/categories.js"></script>
 <script src="webapp/categories/bookmarks/bookmarks.js"></script>
 <script src="webapp/categories/bookmarks/edit/bookmark-edit.js"></script>
 <script src="webapp/categories/bookmarks/create/bookmark-create.js"></script>

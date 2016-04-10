@@ -11,6 +11,7 @@ This app lets you add, edit, and delete Internet bookmarks.
 
 ## Requirements
 npm
+[npm serve](https://www.npmjs.com/package/serve)
 
 ## To run
 First time: `npm install`
