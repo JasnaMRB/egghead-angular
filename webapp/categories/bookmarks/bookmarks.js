@@ -19,7 +19,8 @@ function bookmarkConfig($stateProvider) {
     });
 }
 
-function BookmarksCtrl($stateParams) {
+function BookmarksCtrl($stateParams, BookmarksModel) {
     var bkVm = this;
     bkVm.currentCategoryName = $stateParams.category; // from the url parameter
+    bkVm.bookmarks = BookmarksModel.getBookmarks();
 }

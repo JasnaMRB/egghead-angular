@@ -21,14 +21,9 @@ function categoriesConfig($stateProvider) {
 
 angular.module('categories').controller('CategoriesCtrl', CategoriesCtrl);
 
-function CategoriesCtrl() {
+function CategoriesCtrl(CategoriesModel) {
     var catVm = this;
-    catVm.categories = [
-        {"id": 0, "name": "Development"},
-        {"id": 1, "name": "Design"},
-        {"id": 2, "name": "Exercise"},
-        {"id": 3, "name": "Humor"}
-    ];
+    catVm.categories = CategoriesModel.getCategories();
 
 }
 

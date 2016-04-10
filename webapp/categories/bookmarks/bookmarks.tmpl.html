@@ -1,5 +1,5 @@
 <h2>{{ bmVm.currentCategoryName }}</h2>
-<div ng-repeat="bookmark in mainVm.bookmarks | filter:{category:mainVm.currentCategory.name}"
+<div ng-repeat="bookmark in bmVm.bookmarks | filter:{category:mainVm.currentCategory.name}"
      ng-class="{active : mainVm.isSelectedBookmark(bookmark.id) }">
     <button type="button" class="close" alt="Delete bookmark"
             ng-click="mainVm.deleteBookmark(bookmark)">&times;</button>
