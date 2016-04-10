@@ -1,1 +1,6 @@
-<h1>HELLO UI ROUTER</h1>
+ <a href="#" ng-click="catListVm.setCurrentCategory(null)"><img class="logo" src="assets/img/eggly-logo.png"></a>
+    <ul class="nav nav-sidebar">
+        <li ng-repeat="category in catListVm.categories" ng-class="{'active': catListVm.currentCategory.name === category.name}">
+            <a href="#" ng-click="mainVm.setCurrentCategory(category)">{{ category.name }}</a>
+        </li>
+    </ul>

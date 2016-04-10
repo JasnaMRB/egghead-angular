@@ -1,0 +1,55 @@
+{{ bmVm.currentCategoryName }}
+<div ng-repeat="bookmark in mainVm.bookmarks | filter:{category:mainVm.currentCategory.name}"
+     ng-class="{active : mainVm.isSelectedBookmark(bookmark.id) }">
+    <button type="button" class="close" alt="Delete bookmark"
+            ng-click="mainVm.deleteBookmark(bookmark)">&times;</button>
+    <button type="button" class="btn btn-link" ng-click="mainVm.setEditedBookmark(bookmark);mainVm.startEditing()"><span
+            class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <a href="{{ bookmark.url }}" target="_blank">{{ bookmark.title }}</a>
+</div>
+<hr/>
+<!-- CREATING -->
+<div ng-if="mainVm.shouldShowCreating()">
+    <button ng-if="!mainVm.isCreating" type="button" class="btn btn-link" ng-click="mainVm.startCreating()">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create Bookmark
+    </button>
+    <div ng-if="mainVm.isCreating">
+        <h3>Create a bookmark!</h3><br/>
+        <form class="create-form" ng-show="mainVm.isCreating" role="form"
+              ng-submit="mainVm.createBookmark(mainVm.newBookmark)" novalidate>
+            <div class="form-group">
+                <label for="newBookmarkTitle">Bookmark Title</label>
+                <input type="text" class="form-control" id="newBookmarkTitle" ng-model="mainVm.newBookmark.title"
+                       placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <label for="newBookmarkURL">Bookmark URL</label>
+                <input type="text" class="form-control" id="newBookmarkURL" ng-model="mainVm.newBookmark.url"
+                       placeholder="Enter URL">
+            </div>
+            <button type="submit" class="btn btn-info btn-lg">Create</button>
+            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="mainVm.cancelCreating()">Cancel
+            </button>
+        </form>
+    </div>
+</div>
+<!-- EDITING -->
+<div ng-if="mainVm.shouldShowEditing()">
+    <h3>Editing a bookmark:</h3>
+    <form class="edit-form" role="form" ng-submit="mainVm.updateBookmark(mainVm.editedBookmark)" novalidate>
+        <div class="form-group">
+            <label>Bookmark Title</label>
+            <input type="text" class="form-control" ng-model="mainVm.editedBookmark.title" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label>Bookmark URL</label>
+            <input type="text" class="form-control" ng-model="mainVm.editedBookmark.url" placeholder="Enter URL">
+        </div>
+        <button type="submit" class="btn btn-info btn-lg">Save</button>
+        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="mainVm.cancelEditing()">Cancel
+        </button>
+    </form>
+
+</div>

@@ -4,10 +4,10 @@ angular.module("eggly", [
     'ui.router'
 ])
     .config(config);
-function config($stateProvider) {
+function config($stateProvider, $urlRouterProvider) {
     $stateProvider.state('eggly', {
-        url: '/',
-        templateUrl: 'webapp/categories/categories.tmpl.html',
-        controller: 'MainCtrl'
+        url: '',
+        abstract: true
     });
-};
+    $urlRouterProvider.otherwise('/');
+}
