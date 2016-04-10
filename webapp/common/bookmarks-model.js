@@ -1,12 +1,14 @@
 angular.module('eggly.models.bookmarks', [])
     .service('BookmarksModel', BookmarksModel);
 
-function BookmarksModel($http, $q) {
+function BookmarksModel($http) {
     var model = this,
         URLS = {
             FETCH: "data/bookmarks.json"
-        }, bookmarks;
+        },
+        bookmarks;
     model.getBookmarks = getBookmarks;
+    model.createBookmark = createBookmark;
 
     function extract(result) {
         return result.data;
@@ -16,7 +18,14 @@ function BookmarksModel($http, $q) {
         return bookmarks;
     }
     function getBookmarks() {
-        return (bookmarks) ?
-            $q.when(bookmarks) : $http.get(URLS.FETCH).then(cacheBookmarks);
+        return $http.get(URLS.FETCH).then(cacheBookmarks);
     }
+
+    function createBookmark (bookmark) {
+        bookmark.id = bookmarks.length;
+        bookmarks.push(bookmark);
+
+    }
+
+
 }

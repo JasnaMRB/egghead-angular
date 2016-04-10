@@ -26,7 +26,7 @@ function BookmarksCtrl($stateParams, BookmarksModel, CategoriesModel) {
     bmVm.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
 
     CategoriesModel.setCurrentCategory($stateParams.category);
-    BookmarksModel.getBookmarks().then(function(bookmarks) {
+    BookmarksModel.getBookmarks().then(function (bookmarks) {
         bmVm.bookmarks = bookmarks;
     });
 

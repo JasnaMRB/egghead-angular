@@ -1,4 +1,4 @@
-<h2>{{ bmVm.getCurrentCategoryName }}</h2>
+<h2>{{ bmVm.getCurrentCategoryName() }}</h2>
 <div ng-repeat="bookmark in bmVm.bookmarks | filter:{category:bmVm.getCurrentCategoryName()}"
      ng-class="{active : isSelectedBookmark(bookmark.id) }">
     <button type="button" class="close" aria-label="Delete bookmark"
