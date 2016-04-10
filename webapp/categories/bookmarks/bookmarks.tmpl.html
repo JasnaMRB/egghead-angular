@@ -1,8 +1,7 @@
 <h2>{{ bmVm.getCurrentCategoryName() }}</h2>
-<div ng-repeat="bookmark in bmVm.bookmarks | filter:{category:bmVm.getCurrentCategoryName()}"
-     ng-class="{active : isSelectedBookmark(bookmark.id) }">
+<div ng-repeat="bookmark in bmVm.bookmarks | filter:{category:bmVm.getCurrentCategoryName()}">
     <button type="button" class="close" aria-label="Delete bookmark"
-            ng-click="deleteBookmark(bookmark)">&times;</button>
+            ng-click="bmVm.deleteBookmark(bookmark)">&times;</button>
     <button type="button" class="btn btn-link" ui-sref="eggly.categories.bookmarks.edit({bookmarkId:bookmark.id})"><span
             class="glyphicon glyphicon-pencil"></span>
     </button>

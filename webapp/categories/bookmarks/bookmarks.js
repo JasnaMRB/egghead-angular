@@ -24,6 +24,7 @@ function BookmarksCtrl($stateParams, BookmarksModel, CategoriesModel) {
     bmVm.currentCategoryName = $stateParams.category; // from the url parameter
     bmVm.getCurrentCategory = CategoriesModel.getCurrentCategory;
     bmVm.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
+    bmVm.deleteBookmark = BookmarksModel.deleteBookmark;
 
     CategoriesModel.setCurrentCategory($stateParams.category);
     BookmarksModel.getBookmarks().then(function (bookmarks) {

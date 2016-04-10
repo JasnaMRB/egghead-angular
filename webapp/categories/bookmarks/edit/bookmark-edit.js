@@ -11,6 +11,35 @@ function bookmarkEditConfig($stateProvider) {
         });
 }
 
-function EditBookmarkCtrl() {
+function EditBookmarkCtrl($state, $stateParams, BookmarksModel) {
+    var editBmVm = this;
+    editBmVm.updatedBookmark = updatedBookmark;
+    editBmVm.cancelEditing = cancelEditing;
+
+    function returnToBookmarks () {
+        $state.go('eggly.categories.bookmarks', {
+            category: $stateParams.category
+        });
+    }
+
+    function cancelEditing() {
+        returnToBookmarks();
+    }
+
+    function updatedBookmark() {
+        editBmVm.bookmark = angular.copy(editBmVm.editedBookmark);
+        BookmarksModel.updateBookmark(editBmVm.bookmark);
+        returnToBookmarks();
+    }
+    BookmarksModel.getBookmarkById($stateParams.bookmarkId)
+        .then(function(bookmark) {
+            if (bookmark) {
+                editBmVm.bookmark = bookmark;
+                editBmVm.editedBookmark = angular.copy(editBmVm.bookmark);
+            } else {
+                returnToBookmarks();
+            }
+        });
+
 
 }
