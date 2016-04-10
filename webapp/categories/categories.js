@@ -7,7 +7,7 @@ function categoriesConfig($stateProvider) {
         url: '/',
         views: {
             'categories@': {
-                controller: 'CategoriesListCtrl as catListVm',
+                controller: 'CategoriesCtrl as catVm',
                 templateUrl: 'webapp/categories/categories.tmpl.html'
             },
             'bookmarks@': {
@@ -19,11 +19,11 @@ function categoriesConfig($stateProvider) {
 }
 // name@ with @ means it's an absolute path
 
-angular.module('categories').controller('CategoriesListCtrl', CategoriesListCtrl);
+angular.module('categories').controller('CategoriesCtrl', CategoriesCtrl);
 
-function CategoriesListCtrl() {
-    var catListVm = this;
-    catListVm.categories = [
+function CategoriesCtrl() {
+    var catVm = this;
+    catVm.categories = [
         {"id": 0, "name": "Development"},
         {"id": 1, "name": "Design"},
         {"id": 2, "name": "Exercise"},

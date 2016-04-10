@@ -55,5 +55,20 @@ Then: `http-server`
     ]);`
 1. Inject the bookmarks and categories modules into the main app module. `angular.module("eggly", ['categories', 'categories.bookmarks']);`
 1. Add ui-router for state URL and state parameters. State parameters help pass information between modules.
+1. Use ui-sref directive in view `<a></a>` tags so users can toggle between state URLs.
+    In bookmarks controller:
+    `function bookmarkConfig($stateProvider) {
+         $stateProvider.state('eggly.categories.bookmarks', {
+             url: 'categories/:category',
+             views: {
+                 'bookmarks@': {
+                     templateUrl: 'webapp/categories/bookmarks/bookmarks.tmpl.html',
+                     controller: 'BookmarksCtrl as bmVm'
+                 }
+             }
+         });
+     }`
+     In categories view:
+     `<a ui-sref="eggly.categories.bookmarks({category:category.name})" ng-click="mainVm.setCurrentCategory(category)">{{ category.name }}</a>`
 
 
