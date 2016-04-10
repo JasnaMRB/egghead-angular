@@ -4,7 +4,8 @@
   "description": "Sample Angular app",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "serve": "serve"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "lodash": "^4.9.0"
   },
   "devDependencies": {
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "serve": "^1.4.0"
   }
 }

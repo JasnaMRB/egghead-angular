@@ -4,7 +4,7 @@ This app is to help me understand Angular 1 better. I am following Egghead.io's 
 [egghead.io](egghead.io)
 
 ## Style
-I am not following the tutorial exactly. I instead trying to implement [John Papa's style guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) to get me used to that.
+I am not following the tutorial exactly. I'm instead trying to implement [John Papa's style guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) to get me used to that.
 
 ## About
 This app lets you add, edit, and delete Internet bookmarks.
@@ -13,7 +13,8 @@ This app lets you add, edit, and delete Internet bookmarks.
 npm
 
 ## To run
-`http-server`
+First time: `npm install`
+Then: `http-server`
 
 ## Development Steps
 ### Beginning
@@ -39,5 +40,18 @@ npm
 1. Create functions and variables to make display nicer, e.g., highlight active category or active bookmark.
 
 ### Refactoring code for modularity/scalability
+1. Create a file structure [based on feature](http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript) .
+1. Create module `angular.module('categories',[])` and submodule `angular.module('categories.bookmarks', [])` in their feature folders->JS files.
+1. Create submodules for `create` and `edit` bookmarks.
+1. Inject those submodules into the `categories.bookmarks` submodule: `angular.module('categories.bookmarks', ['categories.bookmarks.create', 'categories.bookmarks.edit'])`
+1. Create a common folder for things used across modules, e.g., models. Here we'll have bookmarks and categories models.
+1. Inject them in their appropriate features modules: `angular.module('categories', ['eggly.models.categories']);` and 
+    `angular.module('categories.bookmarks', [
+        'eggly.models.categories',
+        'eggly.models.bookmarks',
+        'categories.bookmarks.create',
+        'categories.bookmarks.edit'
+    ]);`
+1. Inject the bookmarks and categories modules into the main app module. `angular.module("eggly", ['categories', 'categories.bookmarks']);`
 
 

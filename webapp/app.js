@@ -1,1 +1,1 @@
-angular.module("eggly", []);
+angular.module("eggly", ['categories', 'categories.bookmarks']);
