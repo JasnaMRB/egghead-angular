@@ -1,7 +1,8 @@
 angular.module("eggly", [
     'categories',
     'categories.bookmarks',
-    'ui.router'
+    'ui.router',
+    'ngAnimate'
 ])
     .config(config);
 function config($stateProvider, $urlRouterProvider) {
